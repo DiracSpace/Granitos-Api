@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Api", "Granitos.Api\Granitos.Api.csproj", "{D0475B15-C1BF-473E-AD03-63E8D1F703D5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Services.Domain", "Granitos.Services.Domain\Granitos.Services.Domain.csproj", "{28E549F2-E6BD-4B6A-A397-77CBA56E090E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Services.Infrastructure", "Granitos.Services.Infrastructure\Granitos.Services.Infrastructure.csproj", "{FDAC43A8-525C-4FD3-808C-B4B57460EFA8}"
@@ -12,16 +10,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{769E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Common.Mongo", "Granitos.Common.Mongo\Granitos.Common.Mongo.csproj", "{AE46ABCB-F0FD-457F-BBD8-13973E69AED7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Common", "Granitos.Common\Granitos.Common.csproj", "{9ADB3A0A-4294-4399-8D6C-E634B6E2512E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granitos.Api", "Granitos.Api\Granitos.Api.csproj", "{F5A3823C-CF59-4178-BDF6-2F79CC7B27DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0475B15-C1BF-473E-AD03-63E8D1F703D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0475B15-C1BF-473E-AD03-63E8D1F703D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0475B15-C1BF-473E-AD03-63E8D1F703D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0475B15-C1BF-473E-AD03-63E8D1F703D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28E549F2-E6BD-4B6A-A397-77CBA56E090E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28E549F2-E6BD-4B6A-A397-77CBA56E090E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E549F2-E6BD-4B6A-A397-77CBA56E090E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,8 +32,17 @@ Global
 		{AE46ABCB-F0FD-457F-BBD8-13973E69AED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE46ABCB-F0FD-457F-BBD8-13973E69AED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE46ABCB-F0FD-457F-BBD8-13973E69AED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ADB3A0A-4294-4399-8D6C-E634B6E2512E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADB3A0A-4294-4399-8D6C-E634B6E2512E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADB3A0A-4294-4399-8D6C-E634B6E2512E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADB3A0A-4294-4399-8D6C-E634B6E2512E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A3823C-CF59-4178-BDF6-2F79CC7B27DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A3823C-CF59-4178-BDF6-2F79CC7B27DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A3823C-CF59-4178-BDF6-2F79CC7B27DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A3823C-CF59-4178-BDF6-2F79CC7B27DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AE46ABCB-F0FD-457F-BBD8-13973E69AED7} = {73B8603A-114E-4CC6-9B9F-83F14EF347DB}
+		{9ADB3A0A-4294-4399-8D6C-E634B6E2512E} = {73B8603A-114E-4CC6-9B9F-83F14EF347DB}
 	EndGlobalSection
 EndGlobal

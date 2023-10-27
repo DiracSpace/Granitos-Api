@@ -1,5 +1,5 @@
+using Granitos.Common.Extensions;
 using Granitos.Common.Mongo.DependencyInjection;
-using Granitos.Services.Domain.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

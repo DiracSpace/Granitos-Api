@@ -1,14 +1,20 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0-bullseye-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+ENV DEBIAN_FRONTEND noninteractive
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0-bullseye-slim AS build
 WORKDIR /src
-COPY ["Granitos.Api/Granitos.Api.csproj", "Granitos.Api/"]
-RUN dotnet restore "Granitos.Api/Granitos.Api.csproj"
-COPY . .
+
+COPY ["Granitos.Services.Infrastructure", "Granitos.Services.Infrastructure/"]
+COPY ["Granitos.Services.Domain", "Granitos.Services.Domain/"]
+COPY ["Granitos.Common.Mongo", "Granitos.Common.Mongo/"]
+COPY ["Granitos.Common", "Granitos.Common/"]
+COPY ["Granitos.Api", "Granitos.Api/"]
+
 WORKDIR "/src/Granitos.Api"
+
 RUN dotnet build "Granitos.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

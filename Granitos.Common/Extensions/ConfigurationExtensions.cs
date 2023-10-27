@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace Granitos.Services.Domain.Extensions;
+namespace Granitos.Common.Extensions;
 
 public static class ConfigurationExtensions
 {
