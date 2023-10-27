@@ -1,4 +1,5 @@
 using Granitos.Api.HealthChecks.DependencyInjection;
+using Granitos.Common.Extensions;
 using Granitos.Common.Mongo.DependencyInjection;
 using Granitos.Services.Infrastructure.DependencyInjection;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -31,7 +32,8 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() 
+    || app.Environment.IsLocalhost())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
