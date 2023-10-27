@@ -8,6 +8,9 @@ const string defaultCorsPolicy = "DefaultCorsPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost
+    .ConfigureKestrel(options => options.AddServerHeader = false);
+
 builder.Configuration
     .AddJsonFile("appsettings.json")
     .AddJsonFile("appsettings.Development.json")
