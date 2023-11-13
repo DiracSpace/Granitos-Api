@@ -25,4 +25,9 @@
       <ProjectReference Include="..\Granitos.Services.Infrastructure\Granitos.Services.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\Requests\" />
+      <Folder Include="Models\Responses\" />
+    </ItemGroup>
+
 </Project>
