@@ -1,7 +1,6 @@
 using Granitos.Services.Domain.Cqrs.ProductCategories;
 using Granitos.Services.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Granitos.Api.Controllers;
@@ -25,7 +24,7 @@ public sealed class ProductCategoriesController : Controller
             new { productCategoryId });
     }
 
-    [HttpGet("{productCategoryId}", Name = nameof(GetProductCategoryByIdAsync))]
+    [HttpGet("{productCategoryId:guid}", Name = nameof(GetProductCategoryByIdAsync))]
     public async Task<ProductCategory> GetProductCategoryByIdAsync([FromRoute] Guid productCategoryId)
         => await _mediator.Send(new GetProductCategoryByIdQuery(productCategoryId));
 }

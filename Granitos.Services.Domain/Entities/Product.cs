@@ -2,10 +2,11 @@ namespace Granitos.Services.Domain.Entities;
 
 public sealed class Product : Entity
 {
-    public Product(Guid id, DateTime createdAt, string createdBy, DateTime? updatedAt, DateTime? deletedAt,
-        IReadOnlyDictionary<string, string> metadata, IReadOnlyList<string> tags, string name, string code,
-        string description, string imageUrl, decimal unitPrice, int unitInStock, ProductCategory category) : base(id,
-        createdAt, createdBy, updatedAt, deletedAt, metadata, tags)
+    public Product(Guid id, DateTime createdAt, string? createdBy, DateTime? updatedAt, string? updatedBy,
+        DateTime? deletedAt, string? deletedBy, IReadOnlyDictionary<string, string> metadata,
+        IReadOnlyList<string> tags, string name, string code, string description, string imageUrl, decimal unitPrice,
+        int unitInStock, ProductCategory category) : base(id, createdAt, createdBy, updatedAt, updatedBy, deletedAt,
+        deletedBy, metadata, tags)
     {
         Name = name;
         Code = code;

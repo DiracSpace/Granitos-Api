@@ -1,6 +1,6 @@
 namespace Granitos.Api.HealthChecks.Dependencies;
 
-internal class DependencyHealthCheck
+internal static class DependencyHealthCheck
 {
     public const string Tag = "Dependency";
 }

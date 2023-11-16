@@ -11,5 +11,14 @@ public class CreateProductCategoryCommandValidator : AbstractValidator<CreatePro
             .NotEmpty()
             .NotNull()
             ;
+
+        When(r => r.Metadata.Count > 0, () =>
+        {
+            RuleFor(r => r.Metadata)
+                .Must(metadata => metadata.Select(m => m.Key).All(k => !string.IsNullOrWhiteSpace(k)));
+
+            RuleFor(r => r.Metadata)
+                .Must(metadata => metadata.Select(m => m.Key).ToHashSet().Count == metadata.Count);
+        });
     }
 }
