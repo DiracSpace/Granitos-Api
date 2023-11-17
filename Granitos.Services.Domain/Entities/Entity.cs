@@ -32,7 +32,7 @@ public abstract class Entity
     public IReadOnlyList<string> Tags => _tags;
     private readonly List<string> _tags = new();
 
-    protected void SetMetadata(IReadOnlyDictionary<string, string> metadata)
+    public void SetMetadata(IReadOnlyDictionary<string, string> metadata)
     {
         _metadata.Clear();
 
@@ -40,7 +40,7 @@ public abstract class Entity
             _metadata.Add(value.Key, value.Value);
     }
 
-    protected void SetTags(IReadOnlyList<string> tags)
+    public void SetTags(IReadOnlyList<string> tags)
     {
         _tags.Clear();
         _tags.AddRange(tags);

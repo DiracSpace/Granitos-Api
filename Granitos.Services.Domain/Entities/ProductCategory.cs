@@ -11,4 +11,9 @@ public sealed class ProductCategory : Entity
     }
 
     public string Name { get; private set; }
+
+    public void SetName(string name)
+    {
+        Name = name;
+    }
 }

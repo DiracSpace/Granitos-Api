@@ -5,38 +5,39 @@ using MediatR;
 
 namespace Granitos.Services.Infrastructure.Cqrs.ProductCategories;
 
-public sealed record CreateProductCategoryCommand(
+public sealed record UpdateProductCategoryCommand(
+    Guid Id,
     string Name,
     Dictionary<string, string> Metadata,
-    List<string> Tags) : IRequest<Guid>;
+    List<string> Tags) : IRequest;
 
-internal sealed class CreateProductCategoryCommandHandler : IRequestHandler<CreateProductCategoryCommand, Guid>
+internal sealed class UpdateProductCategoryCommandHandler : IRequestHandler<UpdateProductCategoryCommand>
 {
     private readonly IProductCategoriesRepository _repository;
 
-    public CreateProductCategoryCommandHandler(IProductCategoriesRepository repository)
+    public UpdateProductCategoryCommandHandler(IProductCategoriesRepository repository)
     {
         _repository = repository;
     }
 
-    public async Task<Guid> Handle(CreateProductCategoryCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateProductCategoryCommand request, CancellationToken cancellationToken)
     {
-        new CreateProductCategoryCommandValidator().ValidateAndThrow(request);
+        new UpdateProductCategoryCommandValidator().ValidateAndThrow(request);
 
-        var newProductCategory = new CreateProductCategoryFactory(
+        var productCategory = await _repository.GetByIdAsync(request.Id);
+
+        new UpdateProductCategoryFactory(
                 request.Metadata,
                 request.Tags,
-                request.Name)
-            .Create();
+                request.Name).Update(productCategory);
 
-        var createdProductCategory = await _repository.CreateAsync(newProductCategory);
-        return createdProductCategory.Id;
+        await _repository.UpdateAsync(productCategory);
     }
 }
 
-internal sealed class CreateProductCategoryCommandValidator : AbstractValidator<CreateProductCategoryCommand>
+internal sealed class UpdateProductCategoryCommandValidator : AbstractValidator<UpdateProductCategoryCommand>
 {
-    public CreateProductCategoryCommandValidator()
+    public UpdateProductCategoryCommandValidator()
     {
         RuleFor(r => r.Name)
             .NotEmpty()
