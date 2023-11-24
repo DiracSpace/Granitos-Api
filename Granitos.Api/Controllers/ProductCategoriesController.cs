@@ -27,9 +27,7 @@ public sealed class ProductCategoriesController : Controller
 
     [HttpGet("{productCategoryId:guid}", Name = nameof(GetProductCategoryByIdAsync))]
     public async Task<ProductCategory> GetProductCategoryByIdAsync([FromRoute] Guid productCategoryId)
-    {
-        return await _mediator.Send(new GetProductCategoryByIdQuery(productCategoryId));
-    }
+        => await _mediator.Send(new GetProductCategoryByIdQuery(productCategoryId));
 
     [HttpGet(Name = nameof(GetProductCategoriesAsync))]
     public async Task<PagedResult<ProductCategory>> GetProductCategoriesAsync(
@@ -41,8 +39,8 @@ public sealed class ProductCategoriesController : Controller
         return await _mediator.Send(new GetProductCategoriesQuery(
             pageIndex,
             pageSize,
-            string.Empty,
-            string.Empty));
+            orderBy,
+            filter));
     }
 
     [HttpPut("{productCategoryId:guid}", Name = nameof(UpdateProductCategoryAsync))]
@@ -51,10 +49,12 @@ public sealed class ProductCategoriesController : Controller
         [FromBody] UpdateProductCategoryCommand request)
     {
         if (productCategoryId != request.Id)
+        {
             return BadRequest(new
             {
                 message = "The id in the resource url does not match the id in the request body."
             });
+        }
 
         await _mediator.Send(request);
 

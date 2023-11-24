@@ -6,6 +6,7 @@ using Granitos.Common.Mongo.Repositories.Abstractions;
 using Granitos.Services.Domain.Documents;
 using Granitos.Services.Infrastructure.Mapper.AutoMappers.DependencyInjection;
 using Granitos.Services.Infrastructure.Mapper.Mapsters.DependencyInjection;
+using Granitos.Services.Infrastructure.Repositories.Orders;
 using Granitos.Services.Infrastructure.Repositories.ProductCategories;
 using Granitos.Services.Infrastructure.Repositories.Products;
 using Microsoft.Extensions.Configuration;
@@ -47,6 +48,8 @@ public static class DependencyInjectionExtensions
                     paginationStrategy)
                 .AddMongoDocumentServices<ProductDocument>(ProductDocument.CollectionName,
                     paginationStrategy)
+                .AddMongoDocumentServices<OrderDocument>(OrderDocument.CollectionName,
+                    paginationStrategy)
             ;
     }
 
@@ -79,6 +82,7 @@ public static class DependencyInjectionExtensions
         return services
                 .AddTransient<IProductCategoriesRepository, ProductCategoriesRepository>()
                 .AddTransient<IProductRepository, ProductRepository>()
+                .AddTransient<IOrdersRepository, OrdersRepository>()
             ;
     }
 

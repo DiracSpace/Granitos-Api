@@ -17,7 +17,7 @@ public sealed record CreateProductCommand(
     Dictionary<string, string> Metadata,
     List<string> Tags) : IRequest<Guid>;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Guid>
+internal sealed class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Guid>
 {
     private readonly IProductRepository _repository;
 
@@ -66,5 +66,15 @@ internal sealed class CreateProductCommandValidator : AbstractValidator<CreatePr
         RuleFor(r => r.UnitInStock)
             .NotEmpty()
             .NotNull();
+        
+        // TODO: move to separate validator to prevent repeating code
+        When(r => r.Metadata.Count > 0, () =>
+        {
+            RuleFor(r => r.Metadata)
+                .Must(metadata => metadata.Select(m => m.Key).All(k => !string.IsNullOrWhiteSpace(k)));
+
+            RuleFor(r => r.Metadata)
+                .Must(metadata => metadata.Select(m => m.Key).ToHashSet().Count == metadata.Count);
+        });
     }
 }

@@ -13,4 +13,14 @@ public sealed class Order : Entity
 
     public int TotalProducts { get; private set; }
     public decimal TotalPrice { get; private set; }
+
+    public void SetTotalProducts(int totalProducts)
+    {
+        TotalProducts = totalProducts;
+    }
+
+    public void SetTotalPrice(decimal totalPrice)
+    {
+        TotalPrice = totalPrice;
+    }
 }
