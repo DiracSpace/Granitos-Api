@@ -1,4 +1,8 @@
 using Granitos.Api.HealthChecks.DependencyInjection;
+using Granitos.Common.Errors.FluentValidation.Extensions.NetCore;
+using Granitos.Common.Errors.Http.Extensions.AspNetCore;
+using Granitos.Common.Errors.Http.Extensions.AspNetCore.Filters;
+using Granitos.Common.Errors.Http.Extensions.NetCore;
 using Granitos.Common.Extensions;
 using Granitos.Common.Mongo.DependencyInjection;
 using Granitos.Services.Infrastructure.DependencyInjection;
@@ -26,6 +30,25 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+IReadOnlySet<Type> types = new HashSet<Type>()
+{
+    typeof(HttpRequestException),
+};
+
+builder.Services
+    .AddHttpContextAccessor()
+    .AddHttpErrors()
+    .AddHttpFluentValidationErrors()
+    .AddHttpExceptionFilterOptions(new HttpExceptionFilterOptions
+    {
+        ExcludeExceptionLog = ex => types.Contains(ex.GetType())
+    })
+    .AddControllers(config =>
+    {
+        config.Filters.Add(typeof(HttpExceptionFilter));
+    });
 
 var app = builder.Build();
 

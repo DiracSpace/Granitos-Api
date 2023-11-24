@@ -22,6 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Granitos.Common.Errors.Http.FluentValidation\Granitos.Common.Errors.Http.FluentValidation.csproj" />
+        <ProjectReference Include="..\Granitos.Common.Errors.Http\Granitos.Common.Errors.Http.csproj" />
         <ProjectReference Include="..\Granitos.Services.Infrastructure\Granitos.Services.Infrastructure.csproj"/>
     </ItemGroup>
 
