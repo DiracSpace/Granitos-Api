@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Api/"
+    schedule:
+      interval: "daily"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Api Dependency Update"
