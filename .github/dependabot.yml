@@ -8,7 +8,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Api Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Services.Infrastructure/"
     schedule:
@@ -17,7 +17,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Infrastructure Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Common/"
     schedule:
@@ -26,7 +26,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Common Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Common.Errors.Core/"
     schedule:
@@ -35,7 +35,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Errors Core Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Common.Errors.Http/"
     schedule:
@@ -44,7 +44,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Errors Http Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Common.Errors.Http.FluentValidation/"
     schedule:
@@ -53,7 +53,7 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "Errors Http Fluent Validation Dependency Update"
+      - "dependencies"
   - package-ecosystem: "nuget"
     directory: "/Granitos.Common.Mongo/"
     schedule:
@@ -62,4 +62,4 @@ updates:
     reviewers:
       - "DiracSpace"
     labels:
-      - "MongoDB Client Dependency Update"
+      - "dependencies"
