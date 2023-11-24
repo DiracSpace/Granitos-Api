@@ -3,9 +3,63 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/Granitos.Api/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     target-branch: "master"
     reviewers:
       - "DiracSpace"
     labels:
       - "Api Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Services.Infrastructure/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Infrastructure Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Common/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Common Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Common.Errors.Core/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Errors Core Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Common.Errors.Http/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Errors Http Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Common.Errors.Http.FluentValidation/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "Errors Http Fluent Validation Dependency Update"
+  - package-ecosystem: "nuget"
+    directory: "/Granitos.Common.Mongo/"
+    schedule:
+      interval: "weekly"
+    target-branch: "master"
+    reviewers:
+      - "DiracSpace"
+    labels:
+      - "MongoDB Client Dependency Update"
