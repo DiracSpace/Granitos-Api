@@ -1,12 +1,13 @@
 using Granitos.Services.Domain.Entities;
+using Granitos.Services.Domain.Factories;
 
-namespace Granitos.Services.Domain.Factories.ProductCategories;
+namespace Granitos.Services.Infrastructure.Factories.ProductCategories;
 
 public class CreateProductCategoryFactory : ICreateEntityFactory<ProductCategory>
 {
     private readonly IReadOnlyDictionary<string, string> _metadata;
-    private readonly IReadOnlyList<string> _tags;
     private readonly string _name;
+    private readonly IReadOnlyList<string> _tags;
 
     public CreateProductCategoryFactory(IReadOnlyDictionary<string, string> metadata, IReadOnlyList<string> tags,
         string name)
@@ -17,15 +18,17 @@ public class CreateProductCategoryFactory : ICreateEntityFactory<ProductCategory
     }
 
     public ProductCategory Create()
-        => new(
+    {
+        return new ProductCategory(
             Guid.NewGuid(),
-            createdAt: DateTime.UtcNow,
-            createdBy: string.Empty,
-            updatedAt: DateTime.UtcNow,
-            updatedBy: string.Empty,
-            deletedAt: default,
-            deletedBy: string.Empty,
+            DateTime.UtcNow,
+            string.Empty,
+            DateTime.UtcNow,
+            string.Empty,
+            default,
+            string.Empty,
             _metadata,
             _tags,
             _name);
+    }
 }

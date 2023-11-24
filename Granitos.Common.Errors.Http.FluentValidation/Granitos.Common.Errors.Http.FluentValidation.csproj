@@ -8,12 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.8.0" />
+        <PackageReference Include="FluentValidation" Version="11.8.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Granitos.Common.Errors.Core\Granitos.Common.Errors.Core.csproj" />
-      <ProjectReference Include="..\Granitos.Common.Errors.Http\Granitos.Common.Errors.Http.csproj" />
+        <ProjectReference Include="..\Granitos.Common.Errors.Core\Granitos.Common.Errors.Core.csproj"/>
+        <ProjectReference Include="..\Granitos.Common.Errors.Http\Granitos.Common.Errors.Http.csproj"/>
     </ItemGroup>
 
 </Project>

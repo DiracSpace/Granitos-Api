@@ -9,7 +9,7 @@ internal class ExceptionProblemDetailsFactory : ProblemDetailsFactory<Exception>
     public ExceptionProblemDetailsFactory(
         IErrorDocsUrlFactory errorDocsUrlFactory,
         IHostEnvironment hostEnvironment,
-        IHttpContextAccessor httpContextAccessor) 
+        IHttpContextAccessor httpContextAccessor)
         : base(errorDocsUrlFactory, hostEnvironment, httpContextAccessor)
     {
     }

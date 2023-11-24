@@ -10,8 +10,10 @@ public static class StartupExtensions
         where TFactory : class, IProblemDetailsFactory<TException>
     {
         return services
-                .AddSingleton<IProblemDetailsFactory, TFactory>() // Register with non-generic to be able to retrieve via "IProblemDetailsFactory" token
-                .AddSingleton<IProblemDetailsFactory<TException>, TFactory>() // Register with generic to be able to retrieve via "IProblemDetailsFactory<TException>" token
+                .AddSingleton<IProblemDetailsFactory,
+                    TFactory>() // Register with non-generic to be able to retrieve via "IProblemDetailsFactory" token
+                .AddSingleton<IProblemDetailsFactory<TException>,
+                    TFactory>() // Register with generic to be able to retrieve via "IProblemDetailsFactory<TException>" token
             ;
     }
 

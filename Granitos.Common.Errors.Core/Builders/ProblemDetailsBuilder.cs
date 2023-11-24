@@ -42,10 +42,8 @@ public class ProblemDetailsBuilder
     public ProblemDetailsBuilder WithExtension(string key, object? value)
     {
         if (_problemDetails.Extensions.ContainsKey(key))
-        {
             // Prevent duplicate key exception by removing existing key
             _problemDetails.Extensions.Remove(key);
-        }
 
         _problemDetails.Extensions.Add(key, value);
 
@@ -59,7 +57,7 @@ public class ProblemDetailsBuilder
 
         return this;
     }
-    
+
     public ProblemDetails Build()
     {
         return _problemDetails;

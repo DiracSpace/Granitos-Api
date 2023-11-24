@@ -1,4 +1,5 @@
 using Granitos.Common.Mongo.Repositories.Abstractions;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Granitos.Services.Domain.Documents;
@@ -19,8 +20,9 @@ public class MongoDocument : IMongoDocument
         Tags = tags;
     }
 
-    [BsonRepresentation(MongoDB.Bson.BsonType.String)]
-    public Guid Id { get; set; }
+    public Dictionary<string, string> Metadata { get; set; }
+
+    [BsonRepresentation(BsonType.String)] public Guid Id { get; set; }
 
     public DateTime CreatedAt { get; set; }
     public string? CreatedBy { get; set; }
@@ -28,6 +30,5 @@ public class MongoDocument : IMongoDocument
     public string? UpdatedBy { get; set; }
     public DateTime? DeletedAt { get; set; }
     public string? DeletedBy { get; set; }
-    public Dictionary<string, string> Metadata { get; set; }
     public List<string>? Tags { get; set; }
 }

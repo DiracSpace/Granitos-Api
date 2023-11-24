@@ -14,7 +14,8 @@ public class ProblemDetailsFactory<TException> : IProblemDetailsFactory<TExcepti
     private readonly IHostEnvironment _hostEnvironment;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public ProblemDetailsFactory(IErrorDocsUrlFactory errorDocsUrlFactory, IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor)
+    public ProblemDetailsFactory(IErrorDocsUrlFactory errorDocsUrlFactory, IHostEnvironment hostEnvironment,
+        IHttpContextAccessor httpContextAccessor)
     {
         _errorDocsUrlFactory = errorDocsUrlFactory;
         _hostEnvironment = hostEnvironment;
@@ -81,17 +82,17 @@ public class ProblemDetailsFactory<TException> : IProblemDetailsFactory<TExcepti
 internal static class HttpRequestExtensions
 {
     /// <summary>
-    /// The key of the trace parent header.
+    ///     The key of the trace parent header.
     /// </summary>
     private const string TraceParentHeader = "traceparent";
 
     /// <summary>
-    /// A valid trace parent should contain exactly 4 parts, e.g. 00-00c5603af68757ae581b2b4763a4d593-b441b6f9498984d0-01.
+    ///     A valid trace parent should contain exactly 4 parts, e.g. 00-00c5603af68757ae581b2b4763a4d593-b441b6f9498984d0-01.
     /// </summary>
     private const int TraceParentParts = 4;
 
     /// <summary>
-    /// The traceId is the second part (index 1) of a trace parent header.
+    ///     The traceId is the second part (index 1) of a trace parent header.
     /// </summary>
     private const int TraceIdIndex = 1;
 

@@ -7,6 +7,7 @@ using Granitos.Services.Domain.Documents;
 using Granitos.Services.Infrastructure.Mapper.AutoMappers.DependencyInjection;
 using Granitos.Services.Infrastructure.Mapper.Mapsters.DependencyInjection;
 using Granitos.Services.Infrastructure.Repositories.ProductCategories;
+using Granitos.Services.Infrastructure.Repositories.Products;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,6 +45,8 @@ public static class DependencyInjectionExtensions
                 })
                 .AddMongoDocumentServices<ProductCategoryDocument>(ProductCategoryDocument.CollectionName,
                     paginationStrategy)
+                .AddMongoDocumentServices<ProductDocument>(ProductDocument.CollectionName,
+                    paginationStrategy)
             ;
     }
 
@@ -67,14 +70,15 @@ public static class DependencyInjectionExtensions
         {
             "BucketPattern" => services.AddMongoBucketPatternPagination<TDocument>(),
             "SkipLimit" => services.AddMongoSkipLimitPagination<TDocument>(),
-            _ => throw new InvalidOperationException(@$"Unknown pagination strategy ""{paginationStrategy}""."),
+            _ => throw new InvalidOperationException($"""Unknown pagination strategy "{paginationStrategy}".""")
         };
     }
-    
+
     private static IServiceCollection AddEntityRepositories(this IServiceCollection services)
     {
         return services
                 .AddTransient<IProductCategoriesRepository, ProductCategoriesRepository>()
+                .AddTransient<IProductRepository, ProductRepository>()
             ;
     }
 
@@ -86,7 +90,9 @@ public static class DependencyInjectionExtensions
         {
             "AutoMapper" => services.RegisterAutoMapper(),
             "Mapster" => services.RegisterMapster(),
-            _ => throw new InvalidOperationException($@"Unknown mapper provider: ""{mapperProvider}"""),
+            _ => throw new InvalidOperationException($"""
+                                                      Unknown mapper provider: "{mapperProvider}"
+                                                      """)
         };
     }
 }

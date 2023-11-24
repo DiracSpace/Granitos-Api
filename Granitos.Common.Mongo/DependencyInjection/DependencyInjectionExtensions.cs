@@ -5,7 +5,7 @@ using MongoDB.Driver;
 
 namespace Granitos.Common.Mongo.DependencyInjection;
 
-public static class DependencyInjectionExtensions 
+public static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddMongoDatabase(this IServiceCollection services, MongoOptions options)
     {
@@ -18,7 +18,8 @@ public static class DependencyInjectionExtensions
             ;
     }
 
-    public static IServiceCollection AddMongoRepository<TDocument>(this IServiceCollection services, string collectionName)
+    public static IServiceCollection AddMongoRepository<TDocument>(this IServiceCollection services,
+        string collectionName)
         where TDocument : IMongoDocument
     {
         return services
@@ -26,7 +27,8 @@ public static class DependencyInjectionExtensions
             .AddScoped<IMongoRepository<TDocument>, MongoRepository<TDocument>>();
     }
 
-    private static IServiceCollection AddMongoCollection<TDocument>(this IServiceCollection services, string collectionName)
+    private static IServiceCollection AddMongoCollection<TDocument>(this IServiceCollection services,
+        string collectionName)
     {
         return services.AddTransient<IMongoCollection<TDocument>>(serviceProvider =>
         {

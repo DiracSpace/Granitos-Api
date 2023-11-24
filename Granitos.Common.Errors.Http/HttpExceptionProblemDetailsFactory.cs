@@ -6,16 +6,17 @@ using Microsoft.Extensions.Hosting;
 
 namespace Granitos.Common.Errors.Http;
 
-internal class HttpExceptionProblemDetailsFactory : ProblemDetailsFactory<HttpException>, IProblemDetailsFactory<HttpException>
+internal class HttpExceptionProblemDetailsFactory : ProblemDetailsFactory<HttpException>,
+    IProblemDetailsFactory<HttpException>
 {
     public HttpExceptionProblemDetailsFactory(
         IErrorDocsUrlFactory errorDocsUrlFactory,
         IHostEnvironment hostEnvironment,
-        IHttpContextAccessor httpContextAccessor) 
+        IHttpContextAccessor httpContextAccessor)
         : base(errorDocsUrlFactory, hostEnvironment, httpContextAccessor)
     {
     }
-    
+
     protected override void OnBeforeBuild(ProblemDetailsBuilder builder, HttpException exception)
     {
         builder

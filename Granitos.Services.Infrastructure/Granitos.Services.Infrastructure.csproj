@@ -7,18 +7,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" Version="12.0.1" />
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-        <PackageReference Include="Mapster" Version="7.4.0" />
-        <PackageReference Include="MediatR" Version="12.1.1" />
-        <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
-        <PackageReference Include="FluentValidation" Version="11.8.0" />
+        <PackageReference Include="AutoMapper" Version="12.0.1"/>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1"/>
+        <PackageReference Include="Mapster" Version="7.4.0"/>
+        <PackageReference Include="MediatR" Version="12.1.1"/>
+        <PackageReference Include="MediatR.Contracts" Version="2.0.1"/>
+        <PackageReference Include="FluentValidation" Version="11.8.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Granitos.Common.Mongo\Granitos.Common.Mongo.csproj" />
-      <ProjectReference Include="..\Granitos.Common\Granitos.Common.csproj" />
-      <ProjectReference Include="..\Granitos.Services.Domain\Granitos.Services.Domain.csproj" />
+        <ProjectReference Include="..\Granitos.Common.Mongo\Granitos.Common.Mongo.csproj"/>
+        <ProjectReference Include="..\Granitos.Common\Granitos.Common.csproj"/>
+        <ProjectReference Include="..\Granitos.Services.Domain\Granitos.Services.Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Factories\"/>
     </ItemGroup>
 
 </Project>

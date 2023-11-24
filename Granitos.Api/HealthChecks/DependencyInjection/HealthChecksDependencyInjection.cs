@@ -27,9 +27,9 @@ public static class HealthChecksDependencyInjection
     private static IServiceCollection AddSelfHealthCheck(this IServiceCollection services)
     {
         services
-                .AddHealthChecks()
-                .AddCheck<SelfHealthCheck>(SelfHealthCheck.Name)
-                .AddDependenciesHealthChecks();
+            .AddHealthChecks()
+            .AddCheck<SelfHealthCheck>(SelfHealthCheck.Name)
+            .AddDependenciesHealthChecks();
 
         return services;
     }
@@ -50,13 +50,13 @@ public static class HealthChecksDependencyInjection
             .MapLivenessProbeHealthCheckEndpoint()
             .MapDependenciesHealthCheckEndpoint();
     }
-    
+
     private static IEndpointRouteBuilder MapReadinessProbeHealthCheckEndpoint(this IEndpointRouteBuilder builder)
     {
-        builder.MapHealthChecks("/hc", new HealthCheckOptions()
+        builder.MapHealthChecks("/hc", new HealthCheckOptions
         {
             Predicate = x => x.Name == SelfHealthCheck.Name,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
 
         return builder;
@@ -66,7 +66,7 @@ public static class HealthChecksDependencyInjection
     {
         builder.MapHealthChecks("/liveness", new HealthCheckOptions
         {
-            Predicate = x => x.Name == SelfHealthCheck.Name,
+            Predicate = x => x.Name == SelfHealthCheck.Name
         });
 
         return builder;
@@ -74,10 +74,10 @@ public static class HealthChecksDependencyInjection
 
     private static void MapDependenciesHealthCheckEndpoint(this IEndpointRouteBuilder builder)
     {
-        builder.MapHealthChecks("/health/dependencies", new HealthCheckOptions()
+        builder.MapHealthChecks("/health/dependencies", new HealthCheckOptions
         {
             Predicate = x => x.Tags.Contains(DependencyHealthCheck.Tag),
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
     }
 }

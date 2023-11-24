@@ -1,5 +1,5 @@
 using FluentValidation;
-using Granitos.Services.Domain.Factories.ProductCategories;
+using Granitos.Services.Infrastructure.Factories.ProductCategories;
 using Granitos.Services.Infrastructure.Repositories.ProductCategories;
 using MediatR;
 
@@ -27,9 +27,9 @@ internal sealed class UpdateProductCategoryCommandHandler : IRequestHandler<Upda
         var productCategory = await _repository.GetByIdAsync(request.Id);
 
         new UpdateProductCategoryFactory(
-                request.Metadata,
-                request.Tags,
-                request.Name).Update(productCategory);
+            request.Metadata,
+            request.Tags,
+            request.Name).Update(productCategory);
 
         await _repository.UpdateAsync(productCategory);
     }

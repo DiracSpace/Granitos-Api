@@ -24,4 +24,39 @@ public sealed class Product : Entity
     public decimal UnitPrice { get; private set; }
     public int UnitInStock { get; private set; }
     public ProductCategory Category { get; private set; }
+
+    public void SetName(string name)
+    {
+        Name = name;
+    }
+
+    public void SetCode(string code)
+    {
+        Code = code;
+    }
+
+    public void SetDescription(string description)
+    {
+        Description = description;
+    }
+
+    public void SetImageUrl(string imageUrl)
+    {
+        ImageUrl = imageUrl;
+    }
+
+    public void SetUnitPrice(decimal unitPrice)
+    {
+        UnitPrice = unitPrice;
+    }
+
+    public void SetUnitInStock(int unitInStock)
+    {
+        UnitInStock = unitInStock;
+    }
+
+    public void SetProductCategory(ProductCategory category)
+    {
+        Category = category;
+    }
 }

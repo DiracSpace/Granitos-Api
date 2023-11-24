@@ -41,17 +41,17 @@ internal class MongoRepository<TDocument> : IMongoRepository<TDocument>
     public async Task<TDocument> GetOneAsync(Expression<Func<TDocument, bool>> filter)
     {
         return await _collection
-            .Find(filter)
-            .FirstOrDefaultAsync()
-            ?? throw new NotFoundException<TDocument>();
+                   .Find(filter)
+                   .FirstOrDefaultAsync()
+               ?? throw new NotFoundException<TDocument>();
     }
 
     public async Task<TDocument> GetOneAsync(Guid id)
     {
         return await _collection
-            .Find(x => x.Id == id)
-            .FirstOrDefaultAsync()
-            ?? throw new NotFoundException<TDocument>(id);
+                   .Find(x => x.Id == id)
+                   .FirstOrDefaultAsync()
+               ?? throw new NotFoundException<TDocument>(id);
     }
 
     public async Task<TDocument?> GetOneOrDefaultAsync(Expression<Func<TDocument, bool>> filter)
@@ -79,7 +79,7 @@ internal class MongoRepository<TDocument> : IMongoRepository<TDocument>
     public async Task DeleteAsync(Guid id)
     {
         var document = await GetOneAsync(id);
-        
+
         document.DeletedAt = DateTime.UtcNow;
         document.DeletedBy = document.DeletedBy; // TODO Figure out a neat way to set DeletedBy
 

@@ -10,7 +10,9 @@ namespace Granitos.Common.Errors.FluentValidation;
 
 internal class ValidationExceptionProblemDetailsFactory : ProblemDetailsFactory<ValidationException>
 {
-    public ValidationExceptionProblemDetailsFactory(IErrorDocsUrlFactory errorDocsUrlFactory, IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor) : base(errorDocsUrlFactory, hostEnvironment, httpContextAccessor)
+    public ValidationExceptionProblemDetailsFactory(IErrorDocsUrlFactory errorDocsUrlFactory,
+        IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor) : base(errorDocsUrlFactory,
+        hostEnvironment, httpContextAccessor)
     {
     }
 
@@ -25,7 +27,7 @@ internal class ValidationExceptionProblemDetailsFactory : ProblemDetailsFactory<
                 propertyName = error.PropertyName,
                 errorCode = error.ErrorCode,
                 errorMessage = error.ErrorMessage,
-                attemptedValue = error.AttemptedValue,
+                attemptedValue = error.AttemptedValue
             }));
     }
 }

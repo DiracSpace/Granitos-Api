@@ -28,7 +28,9 @@ internal class ProblemDetailsResolver : IProblemDetailsResolver
     {
         while (true)
         {
-            var factoryType = typeof(IProblemDetailsFactory<>).MakeGenericType(exceptionType); // Equivalent to "IProblemDetailsFactory<TException>"
+            var factoryType =
+                typeof(IProblemDetailsFactory<>)
+                    .MakeGenericType(exceptionType); // Equivalent to "IProblemDetailsFactory<TException>"
             var factory = _serviceProvider.GetService(factoryType);
 
             if (factory is not null) return factory;
@@ -40,13 +42,16 @@ internal class ProblemDetailsResolver : IProblemDetailsResolver
 
     private object GetDefaultFactory()
     {
-        var factoryType = typeof(IProblemDetailsFactory<>).MakeGenericType(typeof(Exception)); // Equivalent to "IProblemDetailsFactory<TException>"
+        var factoryType =
+            typeof(IProblemDetailsFactory<>)
+                .MakeGenericType(typeof(Exception)); // Equivalent to "IProblemDetailsFactory<TException>"
         var factory = _serviceProvider.GetService(factoryType);
 
         if (factory is not null)
             return factory;
 
-        throw new Exception($"Could not find default {nameof(IProblemDetailsFactory<Exception>)} of type {nameof(Exception)}");
+        throw new Exception(
+            $"Could not find default {nameof(IProblemDetailsFactory<Exception>)} of type {nameof(Exception)}");
     }
 
     private static ProblemDetails GetProblemDetails<TException>(object problemDetailsFactory, TException exception)
@@ -60,6 +65,7 @@ internal class ProblemDetailsResolver : IProblemDetailsResolver
         if (problemDetails is not null)
             return (ProblemDetails)problemDetails;
 
-        throw new InvalidOperationException(@$"Could not get problem details using factory ""{problemDetailsFactory!.GetType().Name}"" and exception ""{exception.GetType().Name}"".");
+        throw new InvalidOperationException(
+            @$"Could not get problem details using factory ""{problemDetailsFactory!.GetType().Name}"" and exception ""{exception.GetType().Name}"".");
     }
 }

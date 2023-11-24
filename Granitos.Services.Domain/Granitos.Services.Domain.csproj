@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Models\" />
+        <Folder Include="Models\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Granitos.Common.Mongo\Granitos.Common.Mongo.csproj" />
+        <ProjectReference Include="..\Granitos.Common.Mongo\Granitos.Common.Mongo.csproj"/>
     </ItemGroup>
 
 </Project>

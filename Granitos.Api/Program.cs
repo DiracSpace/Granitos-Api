@@ -35,7 +35,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() 
+if (app.Environment.IsDevelopment()
     || app.Environment.IsLocalhost())
 {
     app.UseSwagger();

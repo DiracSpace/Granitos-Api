@@ -2,6 +2,7 @@ using Granitos.Common.Mongo.Pagination.SkipLimitPattern;
 using Granitos.Common.Mongo.Repositories.Abstractions;
 using Granitos.Services.Domain.Documents;
 using Granitos.Services.Domain.Entities;
+using Granitos.Services.Domain.Repositories;
 using Granitos.Services.Infrastructure.Mapper.Abstractions;
 
 namespace Granitos.Services.Infrastructure.Repositories.ProductCategories;
@@ -12,8 +13,8 @@ public interface IProductCategoriesRepository : IRepository<ProductCategory>
 
 internal sealed class ProductCategoriesRepository : IProductCategoriesRepository
 {
-    private readonly IMongoRepository<ProductCategoryDocument> _repository;
     private readonly IMapper _mapper;
+    private readonly IMongoRepository<ProductCategoryDocument> _repository;
 
     public ProductCategoriesRepository(IMongoRepository<ProductCategoryDocument> repository, IMapper mapper)
     {
@@ -53,10 +54,14 @@ internal sealed class ProductCategoriesRepository : IProductCategoriesRepository
     }
 
     public async Task UpdateAsync(ProductCategory entity)
-        => await _repository.UpdateAsync(_mapper.Map<ProductCategoryDocument>(entity));
+    {
+        await _repository.UpdateAsync(_mapper.Map<ProductCategoryDocument>(entity));
+    }
 
     public async Task DeleteAsync(Guid id)
-        => await _repository.DeleteAsync(id);
+    {
+        await _repository.DeleteAsync(id);
+    }
 
     public async Task<bool> ExistsAsync(Guid id)
     {

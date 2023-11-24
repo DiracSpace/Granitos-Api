@@ -1,5 +1,5 @@
 using FluentValidation;
-using Granitos.Services.Domain.Factories.ProductCategories;
+using Granitos.Services.Infrastructure.Factories.ProductCategories;
 using Granitos.Services.Infrastructure.Repositories.ProductCategories;
 using MediatR;
 

@@ -6,6 +6,8 @@ namespace Granitos.Common.Errors.Http;
 
 internal class ErrorDocsUrlFactory : IErrorDocsUrlFactory
 {
+    private const string DefaultTopLevelDomain = "dev";
+    private const string FallbackDocsUrlTemplate = "https://apps.edgraph.{{TopLevelDomain}}/docs/errors#{{ErrorCode}}";
     private readonly IConfiguration _configuration;
     private readonly IHostEnvironment _hostEnvironment;
 
@@ -13,26 +15,13 @@ internal class ErrorDocsUrlFactory : IErrorDocsUrlFactory
     {
         ["localhost"] = "dev",
         ["development"] = "dev",
-        ["production"] = "com",
+        ["production"] = "com"
     };
-
-    private const string DefaultTopLevelDomain = "dev";
-    private const string FallbackDocsUrlTemplate = "https://apps.edgraph.{{TopLevelDomain}}/docs/errors#{{ErrorCode}}";
 
     public ErrorDocsUrlFactory(IConfiguration configuration, IHostEnvironment hostEnvironment)
     {
         _configuration = configuration;
         _hostEnvironment = hostEnvironment;
-    }
-
-    public string Create(string errorCode)
-    {
-        var docsUrlTemplate = _configuration["Errors:DocsUrl"]
-                              ?? FallbackDocsUrlTemplate;
-
-        return docsUrlTemplate
-            .Replace("{{TopLevelDomain}}", TopLevelDomain)
-            .Replace("{{ErrorCode}}", errorCode);
     }
 
     private string TopLevelDomain
@@ -44,5 +33,15 @@ internal class ErrorDocsUrlFactory : IErrorDocsUrlFactory
             return _topLevelDomainMappings.GetValueOrDefault(environment)
                    ?? DefaultTopLevelDomain;
         }
+    }
+
+    public string Create(string errorCode)
+    {
+        var docsUrlTemplate = _configuration["Errors:DocsUrl"]
+                              ?? FallbackDocsUrlTemplate;
+
+        return docsUrlTemplate
+            .Replace("{{TopLevelDomain}}", TopLevelDomain)
+            .Replace("{{ErrorCode}}", errorCode);
     }
 }

@@ -7,8 +7,8 @@ using MongoDB.Driver;
 namespace Granitos.Api.HealthChecks.Dependencies;
 
 /// <summary>
-/// Source code extracted and adapted from:
-/// https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/src/HealthChecks.MongoDb/MongoDbHealthCheck.cs
+///     Source code extracted and adapted from:
+///     https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/master/src/HealthChecks.MongoDb/MongoDbHealthCheck.cs
 /// </summary>
 public sealed class MongoHealthCheck : IHealthCheck
 {
@@ -21,7 +21,8 @@ public sealed class MongoHealthCheck : IHealthCheck
         _options = options;
     }
 
-    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context,
+        CancellationToken cancellationToken = default)
     {
         try
         {

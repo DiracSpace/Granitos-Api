@@ -1,8 +1,8 @@
 using Granitos.Common.Mongo.Pagination.SkipLimitPattern;
 
-namespace Granitos.Services.Infrastructure.Repositories;
+namespace Granitos.Services.Domain.Repositories;
 
-public interface IRepository<T> 
+public interface IRepository<T>
     where T : class
 {
     Task<T> CreateAsync(T entity);

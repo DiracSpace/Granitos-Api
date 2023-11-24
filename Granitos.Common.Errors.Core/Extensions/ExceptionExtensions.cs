@@ -5,7 +5,8 @@ namespace Granitos.Common.Errors.Core.Extensions;
 public static class ExceptionExtensions
 {
     /// <summary>
-    /// Recursively gets the message of an exception and its inner exceptions, up to a specified number of inner exceptions.
+    ///     Recursively gets the message of an exception and its inner exceptions, up to a specified number of inner
+    ///     exceptions.
     /// </summary>
     /// <param name="ex">The exception to get the message for.</param>
     /// <param name="maxInnerExceptions">The maximum number of inner exceptions to traverse. The default is 3.</param>

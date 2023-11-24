@@ -12,5 +12,7 @@ internal sealed class Mapper : IMapper
     }
 
     public TDestination Map<TDestination>(object source)
-        => _mapper.Map<TDestination>(source);
+    {
+        return _mapper.Map<TDestination>(source);
+    }
 }

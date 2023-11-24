@@ -4,10 +4,6 @@ namespace Granitos.Common.Errors.Http.Exceptions;
 
 public class HttpException : Exception
 {
-    public string Code { get; }
-    public HttpStatusCode Status { get; }
-    public override Dictionary<string, object?> Data { get; } = new();
-
     public HttpException(string code, HttpStatusCode status)
     {
         Code = code;
@@ -27,6 +23,10 @@ public class HttpException : Exception
         Code = code;
         Status = statusCode;
     }
+
+    public string Code { get; }
+    public HttpStatusCode Status { get; }
+    public override Dictionary<string, object?> Data { get; } = new();
 
     public HttpException WithData(string key, object? value)
     {

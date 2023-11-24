@@ -2,6 +2,9 @@ namespace Granitos.Services.Domain.Entities;
 
 public abstract class Entity
 {
+    private readonly Dictionary<string, string> _metadata = new();
+    private readonly List<string> _tags = new();
+
     protected Entity(Guid id, DateTime createdAt, string? createdBy, DateTime? updatedAt, string? updatedBy,
         DateTime? deletedAt, string? deletedBy, IReadOnlyDictionary<string, string> metadata,
         IReadOnlyList<string> tags)
@@ -27,10 +30,8 @@ public abstract class Entity
     public string? DeletedBy { get; }
 
     public IReadOnlyDictionary<string, string> Metadata => _metadata;
-    private readonly Dictionary<string, string> _metadata = new();
 
     public IReadOnlyList<string> Tags => _tags;
-    private readonly List<string> _tags = new();
 
     public void SetMetadata(IReadOnlyDictionary<string, string> metadata)
     {
