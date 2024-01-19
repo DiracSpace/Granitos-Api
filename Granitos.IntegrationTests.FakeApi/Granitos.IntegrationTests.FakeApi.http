@@ -1,0 +1,6 @@
+@Granitos.IntegrationTests.FakeApi_HostAddress = http://localhost:5091
+
+GET {{Granitos.IntegrationTests.FakeApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
