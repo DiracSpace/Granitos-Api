@@ -40,9 +40,6 @@ app.UseRouting();
 
 app.MapGet("/", () => "Hello World!");
 
-app.UseEndpoints(endpoints =>
-{
-  endpoints.MapControllers();
-});
+app.MapControllers();
 
 app.Run();

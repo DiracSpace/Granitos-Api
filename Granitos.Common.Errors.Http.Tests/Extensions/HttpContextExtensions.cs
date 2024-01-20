@@ -1,7 +1,6 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Granitos.Common.Errors.Http.Tests.Extensions;
@@ -15,10 +14,10 @@ internal static class HttpContextExtensions
 
     internal class HttpContextAccessorStub : IHttpContextAccessor
     {
-        public HttpContext HttpContext { get; set; } = new HttpContextStub();
+        public HttpContext? HttpContext { get; set; } = new HttpContextStub();
     }
 
-    internal class HttpContextStub : HttpContext
+    private class HttpContextStub : HttpContext
     {
         public override IFeatureCollection Features => throw new NotImplementedException();
 
@@ -33,7 +32,7 @@ internal static class HttpContextExtensions
         // public override AuthenticationManager Authentication => throw new NotImplementedException();
 
         public override ClaimsPrincipal User { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override IDictionary<object, object> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override IDictionary<object, object?> Items { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override IServiceProvider RequestServices { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override CancellationToken RequestAborted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override string TraceIdentifier { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
